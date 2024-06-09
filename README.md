@@ -11,7 +11,7 @@ Setting up the above database and its read replica involves launching an RDS run
 PhpMyAdmin is a free open-source web-based interface for managing databases such as MySQL and MariaDB. It is written in PHP.
 
 <p align="center">
-<img src="network-architecture" height="50%" width="70%"/>
+<img src="https://github.com/Topzdomain/Setting-Up-an-RDS-Instance-With-Read-Replica/blob/main/screenshots/architecture-diagram.png" height="50%" width="70%"/>
 </p>
 <h5 align="center"> Network Architecture</h5>
 
@@ -20,7 +20,7 @@ PhpMyAdmin is a free open-source web-based interface for managing databases such
 Based on the network architecture, I created a VPC with a CIDR of 192.168.0.0/16.
 
 <p align="center">
-<img src="vpc" height="40%" width="60%"/>
+<img src="https://github.com/Topzdomain/Setting-Up-an-RDS-Instance-With-Read-Replica/blob/main/screenshots/vpc.png" height="65%" width="50%"/>
 </p>
 
 <h2 align="left"> Creating Internet Gateway</h2>
@@ -28,11 +28,11 @@ Based on the network architecture, I created a VPC with a CIDR of 192.168.0.0/16
 Next, I created the internet gateway which I attached to the vpc.
 
 <p align="center">
-<img src="igw" height="40%" width="60%"/>
+<img src="https://github.com/Topzdomain/Setting-Up-an-RDS-Instance-With-Read-Replica/blob/main/screenshots/igw.png" height="40%" width="60%"/>
 </p>
 
 <p align="center">
-<img src="attaching-igw-to-vpc" height="40%" width="60%"/>
+<img src="https://github.com/Topzdomain/Setting-Up-an-RDS-Instance-With-Read-Replica/blob/main/screenshots/attaching-igw-to-vpc.png" height="40%" width="60%"/>
 </p>
 
 <h2 align="left"> Creating Subnets</h2>
@@ -40,21 +40,18 @@ Next, I created the internet gateway which I attached to the vpc.
 Next, I created the two public subnets in different AZs, Subnet A in us-east-1a and Subnet B in us-east-1c. After creation, I edited the subnet settings to auto-assign IPv4 address to both public subnets.
 
 <p align="center">
-<img src="public-subnet-A" height="40%" width="60%"/>
-</p>
-
-<p align="center">
-<img src="public-subnet-B" height="40%" width="60%"/>
+<img src="https://github.com/Topzdomain/Setting-Up-an-RDS-Instance-With-Read-Replica/blob/main/screenshots/public-subnet-A.png" height="35%" width="45%"/>
+<img src="https://github.com/Topzdomain/Setting-Up-an-RDS-Instance-With-Read-Replica/blob/main/screenshots/public-subnet-B.png" height="35%" width="45%"/>
 </p>
 
 Configuring Subnet Settings to Auto-Assign IPv4 Address to Subnets
 
 <p align="center">
-<img src="edit-subnet-settings" height="40%" width="60%"/>
+<img src="https://github.com/Topzdomain/Setting-Up-an-RDS-Instance-With-Read-Replica/blob/main/screenshots/edit-subnet-settings.png" height="60%" width="80%"/>
 </p>
 
 <p align="center">
-<img src="enable-auto-assign-ip" height="40%" width="60%"/>
+<img src="https://github.com/Topzdomain/Setting-Up-an-RDS-Instance-With-Read-Replica/blob/main/screenshots/enable-auto-assign-ip.png" height="60%" width="80%"/>
 </p>
 
 Click the save button after enabling the auto-assign public IPv4 address
@@ -64,11 +61,11 @@ Click the save button after enabling the auto-assign public IPv4 address
 A default route is usually created after a vpc is created. I edited the name to "Main-Route" and edited the routing table to send all internet-bound traffic through the IGW. I also associated both subnets with the main route.
 
 <p align="center">
-<img src="edit-route-table" height="40%" width="60%"/>
+<img src="https://github.com/Topzdomain/Setting-Up-an-RDS-Instance-With-Read-Replica/blob/main/screenshots/editing-route-table.png" height="45%" width="65%"/>
 </p>
 
 <p align="center">
-<img src="associating-subnets" height="40%" width="60%"/>
+<img src="https://github.com/Topzdomain/Setting-Up-an-RDS-Instance-With-Read-Replica/blob/main/screenshots/associating-subnets.png" height="45%" width="65%"/>
 </p>
 
 <h2 align="left"> Configuring Security Group</h2>
@@ -76,46 +73,46 @@ A default route is usually created after a vpc is created. I edited the name to 
 I configured the default security group created by the VPC to allow SSH and HTTP traffic from any IPv4 address. Also, after I create the EC2 instance, I'll need to allow MySQL/Aurora traffic from the EC2 private IP address. The reason why I allowed all SSH and HTTP traffic from the internet is because I'll terminate all instances and set-up immediately after the lab.
 
 <p align="center">
-<img src="sg-configuration" height="40%" width="60%"/>
+<img src="https://github.com/Topzdomain/Setting-Up-an-RDS-Instance-With-Read-Replica/blob/main/screenshots/sg-configuration.png" height="60%" width="80%"/>
 </p>
 
 
 <h2 align="left"> Launching An RDS Instance</h2>
 
 <p align="center">
-<img src="db-creation-method" height="40%" width="60%"/>
+<img src="https://github.com/Topzdomain/Setting-Up-an-RDS-Instance-With-Read-Replica/blob/main/screenshots/db-creation-method.png" height="40%" width="60%"/>
 </p>
 
 <p align="center">
-<img src="engine-option" height="40%" width="60%"/>
+<img src="https://github.com/Topzdomain/Setting-Up-an-RDS-Instance-With-Read-Replica/blob/main/screenshots/engine-option.png" height="70%" width="50%"/>
 </p>
 
 <p align="center">
-<img src="template-n-availability" height="40%" width="60%"/>
+<img src="https://github.com/Topzdomain/Setting-Up-an-RDS-Instance-With-Read-Replica/blob/main/screenshots/template-n-availability.png" height="40%" width="60%"/>
 </p>
 
 <p align="center">
-<img src="setting" height="40%" width="60%"/>
+<img src="https://github.com/Topzdomain/Setting-Up-an-RDS-Instance-With-Read-Replica/blob/main/screenshots/setting.png" height="40%" width="60%"/>
 </p>
 
 <p align="center">
-<img src="instance-configuration" height="40%" width="60%"/>
+<img src="https://github.com/Topzdomain/Setting-Up-an-RDS-Instance-With-Read-Replica/blob/main/screenshots/instance-configuration.png" height="45%" width="65%"/>
 </p>
 
 <p align="center">
-<img src="connectivity-1" height="40%" width="60%"/>
+<img src="https://github.com/Topzdomain/Setting-Up-an-RDS-Instance-With-Read-Replica/blob/main/screenshots/connectivity-1.png" height="45%" width="65%"/>
 </p>
 
 <p align="center">
-<img src="connectivity-2" height="40%" width="60%"/>
+<img src="https://github.com/Topzdomain/Setting-Up-an-RDS-Instance-With-Read-Replica/blob/main/screenshots/connectivity-2.png" height="40%" width="60%"/>
 </p>
 
 <p align="center">
-<img src="connectivity-3" height="40%" width="60%"/>
+<img src="https://github.com/Topzdomain/Setting-Up-an-RDS-Instance-With-Read-Replica/blob/main/screenshots/connectivity-3.png" height="40%" width="60%"/>
 </p>
 
 <p align="center">
-<img src="db-creation-completed" height="40%" width="60%"/>
+<img src="https://github.com/Topzdomain/Setting-Up-an-RDS-Instance-With-Read-Replica/blob/main/screenshots/db-creation-completed.png" height="40%" width="60%"/>
 </p>
 
 
@@ -151,33 +148,33 @@ cp config.sample.inc.php config.inc.php
 ```
 
 <p align="center">
-<img src="ec2-ami" height="40%" width="60%"/>
+<img src="https://github.com/Topzdomain/Setting-Up-an-RDS-Instance-With-Read-Replica/blob/main/screenshots/ec2-ami.png" height="45%" width="65%"/>
 </p>
 
 <p align="center">
-<img src="instance-type" height="40%" width="60%"/>
+<img src="https://github.com/Topzdomain/Setting-Up-an-RDS-Instance-With-Read-Replica/blob/main/screenshots/instance-type.png" height="45%" width="65%"/>
 </p>
 
 <p align="center">
-<img src="network-settings" height="40%" width="60%"/>
+<img src="https://github.com/Topzdomain/Setting-Up-an-RDS-Instance-With-Read-Replica/blob/main/screenshots/network-settings.png" height="40%" width="60%"/>
 </p>
 
 <p align="center">
-<img src="user-data" height="40%" width="60%"/>
+<img src="https://github.com/Topzdomain/Setting-Up-an-RDS-Instance-With-Read-Replica/blob/main/screenshots/user-data.png" height="35%" width="50%"/>
 </p>
 
 <p align="center">
-<img src="sg-re-configuration" height="40%" width="60%"/>
+<img src="https://github.com/Topzdomain/Setting-Up-an-RDS-Instance-With-Read-Replica/blob/main/screenshots/sg-re-configuration.png" height="60%" width="80%"/>
 </p>
 <h5 align="center"> SG Re-Configuration</h5>
 
 <p align="center">
-<img src="logging-into-ec2-instance" height="40%" width="60%"/>
+<img src="https://github.com/Topzdomain/Setting-Up-an-RDS-Instance-With-Read-Replica/blob/main/screenshots/logging-into-ec2-instance.png" height="40%" width="60%"/>
 </p>
 <h5 align="center"> Logging into EC2 Instance for phpMyAdmin Configuration</h5>
 
 <p align="center">
-<img src="editing-local-host-phpMyAdmin" height="40%" width="60%"/>
+<img src="https://github.com/Topzdomain/Setting-Up-an-RDS-Instance-With-Read-Replica/blob/main/screenshots/editing-localhost-php-config-file.png" height="60%" width="80%"/>
 </p>
 <h5 align="center"> Editing Localhost for phpMyAdmin Configuration File</h5>
 
@@ -187,27 +184,27 @@ cp config.sample.inc.php config.inc.php
 Now that phpMyAdmin which is linked to the primary database has been completely configured, using the EC2 Instance's public IP (http://107.22.5.148/phpMyAdmin) and the login credentials that I set-up during the database creation, I logged into the phpMyAdmin dashboard. I created a database, a table and populated a few rows and columns. This is possible since I am in the primary database, but this should not be possible when I log into the read-only secondary database.
 
 <p align="center">
-<img src="phpmyadmin-login-page" height="40%" width="60%"/>
+<img src="https://github.com/Topzdomain/Setting-Up-an-RDS-Instance-With-Read-Replica/blob/main/screenshots/phpmyadmin-login-page.png" height="60%" width="40%"/>
 </p>
 <h5 align="center"> phpMyAdmin Login Page</h5>
 
 <p align="center">
-<img src="db-creation-on-php" height="40%" width="60%"/>
+<img src="https://github.com/Topzdomain/Setting-Up-an-RDS-Instance-With-Read-Replica/blob/main/screenshots/db-creation-on-php.png" height="60%" width="80%"/>
 </p>
 <h5 align="center"> Creating a Database</h5>
 
 <p align="center">
-<img src="table-creation-php" height="40%" width="60%"/>
+<img src="https://github.com/Topzdomain/Setting-Up-an-RDS-Instance-With-Read-Replica/blob/main/screenshots/table-creation-php.png" height="60%" width="80%"/>
 </p>
 <h5 align="center"> Creating a Table on the Database</h5>
 
 <p align="center">
-<img src="field-title-creation" height="40%" width="60%"/>
+<img src="https://github.com/Topzdomain/Setting-Up-an-RDS-Instance-With-Read-Replica/blob/main/screenshots/field-title-creation.png" height="60%" width="80%"/>
 </p>
 <h5 align="center"> Creating Field Titles for the Table</h5>
 
 <p align="center">
-<img src="db-table-populated" height="40%" width="60%"/>
+<img src="https://github.com/Topzdomain/Setting-Up-an-RDS-Instance-With-Read-Replica/blob/main/screenshots/db-table-populated.png" height="60%" width="80%"/>
 </p>
 <h5 align="center"> Query Result After Populating Table</h5>
 
@@ -217,23 +214,23 @@ Now that phpMyAdmin which is linked to the primary database has been completely 
 The next step is to create the read replica, which is read-only. I used the same settings as the primary DB with changes only to the name. To test and validate that the whole setup works, I'll log in to the read replica database and try to add more records to the table. The failure of the database to execute this command is a prove that the setup is well-configured and working well. 
 
 <p align="center">
-<img src="read-replica-init" height="40%" width="60%"/>
+<img src="https://github.com/Topzdomain/Setting-Up-an-RDS-Instance-With-Read-Replica/blob/main/screenshots/read-replica-init.png" height="60%" width="80%"/>
 </p>
 
 <p align="center">
-<img src="read-replica-settings" height="40%" width="60%"/>
+<img src="https://github.com/Topzdomain/Setting-Up-an-RDS-Instance-With-Read-Replica/blob/main/screenshots/read-replica-settings.png" height="60%" width="80%"/>
 </p>
 
 <p align="center">
-<img src="read-replica-instance-config" height="40%" width="60%"/>
+<img src="https://github.com/Topzdomain/Setting-Up-an-RDS-Instance-With-Read-Replica/blob/main/screenshots/read-replica-instance-config.png" height="70%" width="50%"/>
 </p>
 
 <p align="center">
-<img src="read-replica-connectivity" height="40%" width="60%"/>
+<img src="https://github.com/Topzdomain/Setting-Up-an-RDS-Instance-With-Read-Replica/blob/main/screenshots/read-replica-connectivity.png" height="60%" width="80%"/>
 </p>
 
 <p align="center">
-<img src="changing-local-host-to-read-replica-endpoint" height="40%" width="60%"/>
+<img src="https://github.com/Topzdomain/Setting-Up-an-RDS-Instance-With-Read-Replica/blob/main/screenshots/changing-local-host-to-read-replica-endpoint.png" height="60%" width="80%"/>
 </p>
 <h5 align="center"> Switching to the Read Replica Database by Changing the Localhost Address to The Endpoint of the Read Replica</h5>
 
@@ -246,11 +243,11 @@ The endpoint of each of the databases can be found in the connectivity and secur
 I went to the phpMyAdmin dashboard and tried adding a new record to the table and it failed.
 
 <p align="center">
-<img src="creating-new-row-read-replica" height="40%" width="60%"/>
+<img src="https://github.com/Topzdomain/Setting-Up-an-RDS-Instance-With-Read-Replica/blob/main/screenshots/creating-new-row-read-replica.png" height="60%" width="80%"/>
 </p>
 <h5 align="center"> Creating a New Record/Row</h5>
 
 <p align="center">
-<img src="error message" height="40%" width="60%"/>
+<img src="https://github.com/Topzdomain/Setting-Up-an-RDS-Instance-With-Read-Replica/blob/main/screenshots/error-message.png" height="50%" width="50%"/>
 </p>
 <h5 align="center"> Error message</h5>
